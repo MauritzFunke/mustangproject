@@ -465,6 +465,14 @@ public class Item implements IZUGFeRDExportableItem {
 		return referencedDocuments.toArray(new IReferencedDocument[0]);
 	}
 
+	/**
+	 * Gets the total amount of vat paid on this item
+	 * @return BigDecimal VatAmount
+	 */
+	public BigDecimal getVatAmount() {
+		return this.price.multiply(this.product.VATPercent.divide(new BigDecimal(100))).multiply(this.quantity);
+	}
+
 	/***
 	 * specify a item level delivery period
 	 * (apart from the document level delivery period, and the document level
